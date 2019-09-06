@@ -26,14 +26,11 @@ namespace WebApplication1.Service
             Errors=Validate.All(BookObject);
             if (Errors.Count < 1)
             {
-                //JObject res = JObject.Parse(Errors);
                 response = JsonConvert.SerializeObject("Book Added", Formatting.Indented);
+                Data.bookList.Add(BookObject);
             }
-
             else
-                response = JsonConvert.SerializeObject(Errors, Formatting.Indented);
-                        
-            Data.bookList.Add(BookObject);
+                response = JsonConvert.SerializeObject(Errors, Formatting.Indented);            
             return response;
         }
 
