@@ -1,0 +1,17 @@
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\bin\Debug\netcoreapp2.1\WebApplication1.Test.deps.json
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\bin\Debug\netcoreapp2.1\WebApplication1.Test.runtimeconfig.json
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\bin\Debug\netcoreapp2.1\WebApplication1.Test.runtimeconfig.dev.json
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\bin\Debug\netcoreapp2.1\WebApplication1.Test.dll
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\bin\Debug\netcoreapp2.1\WebApplication1.Test.pdb
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\bin\Debug\netcoreapp2.1\WebApplication1.dll
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\bin\Debug\netcoreapp2.1\WebApplication1.pdb
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\obj\Debug\netcoreapp2.1\WebApplication1.Test.csprojAssemblyReference.cache
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\obj\Debug\netcoreapp2.1\WebApplication1.Test.csproj.CoreCompileInputs.cache
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\obj\Debug\netcoreapp2.1\WebApplication1.Test.AssemblyInfoInputs.cache
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\obj\Debug\netcoreapp2.1\WebApplication1.Test.AssemblyInfo.cs
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\obj\Debug\netcoreapp2.1\WebApplication1.Test.csproj.CopyComplete
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\obj\Debug\netcoreapp2.1\WebApplication1.Test.dll
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\obj\Debug\netcoreapp2.1\WebApplication1.Test.pdb

@@ -1,8 +1,11 @@
 using System;
 using Xunit;
-using WebApplication1.DataBase;
+using WebApplication1.Service;
 using WebApplication1.Model;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace WebApplication1.Test
 {
@@ -10,11 +13,23 @@ namespace WebApplication1.Test
     {
         BookServices BS = new BookServices();
         [Fact]
-        public void Test1()
+        public void AddingBookByPostWithoutNull()
         {
-            Book b = new Book{BookId= 2,BookName= "Never Ending",Category= "Romance",Price= 500,Author= "Chetan Bhagat" };
-            string JSONobject = JsonConvert.SerializeObject(b);
-            BS.AddBook(JSONobject);
+            Book b = new Book{BookId= 2,BookName= "NeverEnding",Category= "Romance",Price= 500,Author= "ChetanBhagat" };
+            var expected= JsonConvert.SerializeObject("Book Added", Formatting.Indented);
+            var actual=BS.AddBook(b);
+            Assert.Equal(expected,actual);
+
+        }
+        [Fact]
+        public void AddingBookByPostWithNegativeId()
+        {
+            Book b = new Book { BookId = -8, BookName = "NeverEnding", Category = "Romance", Price = 500, Author = "ChetanBhagat" };
+            List<string> li = new List<string>() { "BookId: Needs to Be Positive number" };
+            var expected = JsonConvert.SerializeObject(li, Formatting.Indented);
+            var actual = BS.AddBook(b);
+            Assert.Equal(expected, actual);
+
         }
     }
 }

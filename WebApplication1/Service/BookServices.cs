@@ -1,15 +1,16 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1.Model;
 
-namespace WebApplication1.DataBase
+namespace WebApplication1.Service
 {
     public class BookServices
     {
-        
+        Validate Validate = new Validate();   
         public IEnumerable<Book> GetAll()
         {
             return Data.bookList;
@@ -18,22 +19,25 @@ namespace WebApplication1.DataBase
         {
             return Data.bookList[id];
         }
-        public void AddBook(JObject BookObject)
+        public string AddBook(Book BookObject)
         {
-            var booknumber = int.Parse(BookObject.GetValue("BookId").ToString());
-            var bookPrice = int.Parse(BookObject.GetValue("Price").ToString());
-            var bookName = BookObject.GetValue("BookName").ToString();
-            var bookAuthor= BookObject.GetValue("BookAuthor").ToString();
-            var bookCategory = BookObject.GetValue("Category").ToString();
+            string response = "";
+            List<string> Errors = new List<string>();
+            Errors=Validate.All(BookObject);
+            if (Errors.Count < 1)
+            {
+                //JObject res = JObject.Parse(Errors);
+                response = JsonConvert.SerializeObject("Book Added", Formatting.Indented);
+            }
 
-            Data.bookList.Add(new Book { BookId = booknumber,
-                                    BookName =bookName,
-                                    Author=bookAuthor,
-                                    Category=bookCategory,
-                                    Price=bookPrice        });
+            else
+                response = JsonConvert.SerializeObject(Errors, Formatting.Indented);
+                        
+            Data.bookList.Add(BookObject);
+            return response;
         }
 
-        public string UpdateBook(int id, JObject obj)
+        public string UpdateBook(int id, Book obj)
         {
             int flag = 0;
             Book BookToRemove=null;

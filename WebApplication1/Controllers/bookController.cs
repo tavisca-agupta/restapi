@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
-using WebApplication1.DataBase;
+using WebApplication1.Service;
 using WebApplication1.Model;
 
 namespace WebApplication1.Controllers
@@ -31,18 +31,14 @@ namespace WebApplication1.Controllers
 
         // POST: api/book
         [HttpPost]
-        public string Post([FromBody] JObject obj)
+        public string Post([FromBody] Book obj)
         {
-            //var booknumber = int.Parse(obj.GetValue("MyBookProperty").ToString());
-            //bookList.Add(new Book { MyBookProperty = booknumber });
-            book.AddBook(obj);
-            return "Post Done";
-
+            return book.AddBook(obj); 
         }
 
         // PUT: api/book/5
         [HttpPut("{id}")]
-        public string Put(int id, [FromBody] JObject obj)
+        public string Put(int id, [FromBody] Book obj)
         {
             return book.UpdateBook(id, obj);
         }
