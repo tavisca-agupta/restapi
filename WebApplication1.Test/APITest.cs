@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace WebApplication1.Test
 {
-    public class UnitTest1
+    public class APITest
     {
         BookServices BS = new BookServices();
         [Fact]
