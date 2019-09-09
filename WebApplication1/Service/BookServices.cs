@@ -1,8 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using WebApplication1.Model;
 
@@ -11,52 +15,99 @@ namespace WebApplication1.Service
     public class BookServices
     {
         Validate Validate = new Validate();   
-        public IEnumerable<Book> GetAll()
+        public ActionResult GetAll()
         {
-            return Data.bookList;
-        }
-        public Book GetById(int id)
-        {
-            return Data.bookList[id];
-        }
-        public string AddBook(Book BookObject)
-        {
-            string response = "";
-            List<string> Errors = new List<string>();
-            Errors=Validate.All(BookObject);
-            if (Errors.Count < 1)
+            int statusCode;
+            string content="";
+            if (Data.bookList.Count > 1)
             {
-                response = JsonConvert.SerializeObject("Book Added", Formatting.Indented);
-                Data.bookList.Add(BookObject);
+                content = JsonConvert.SerializeObject(Data.bookList);
+                statusCode = 200;
             }
             else
-                response = JsonConvert.SerializeObject(Errors, Formatting.Indented);            
-            return response;
+                statusCode = 204;
+
+            return Response(content, statusCode);
         }
 
-        public string UpdateBook(int id, Book obj)
+        public ActionResult GetById(int id)
         {
-            int flag = 0;
-            Book BookToRemove=null;
-            string msg = "Updation Done";
-            foreach (Book book in Data.bookList)
-                if (book.BookId == id)
-                {
-                    flag++;
-                    BookToRemove = book;
-                }
-            Data.bookList.Remove(BookToRemove);
-            if (flag > 0)
-                 AddBook(obj); 
-            else
-                 msg = "Book is not Present For Updation"; 
+            string content,error;
+            int statusCode;
+            try
+            {
+                content = JsonConvert.SerializeObject(Data.bookList[id]);
+                statusCode = 200;
 
-            return msg;
+            }
+            catch(Exception)
+            {
+                if (id < 0)
+                    error = Validate.BookId(id);
+                else
+                    error = "Please Enter Valid Index to Get The Book";
+
+                content = JsonConvert.SerializeObject(error);
+                statusCode = 404;
+            }
+            return Response(content, statusCode);
+
+        }
+        public ActionResult AddBook(Book BookObject)
+        {
+            string content; int statusCode;
+            List<string> Errors = new List<string>();
+            Errors=Validate.All(BookObject);                      //Validation done here
+            if (Errors.Count < 1)
+            {
+                content = JsonConvert.SerializeObject("Book Added");
+                Data.bookList.Add(BookObject);
+                statusCode = 201;
+            }
+            else
+            {
+                content = JsonConvert.SerializeObject(Errors,Formatting.Indented);
+                statusCode = 400;
+            }
+            return Response(content,statusCode);
+        }
+
+        public ActionResult UpdateBook(int id, Book bookObject)
+        {
+            string content;int statusCode;
+            Book BookToRemove=null;
+            if(Validate.All(bookObject).Count<1)
+                BookToRemove = Data.bookList.Find(x => x.BookId == id);
+            
+            if(BookToRemove!=null)
+            {
+                Data.bookList.Remove(BookToRemove);
+                Data.bookList.Add(bookObject);
+                content = JsonConvert.SerializeObject("Book Updated");
+                statusCode = 201;
+                
+            }
+            else
+            {
+                content= JsonConvert.SerializeObject("Book is not Present For Updation");
+                statusCode = 404;
+            }
+            return Response(content, statusCode);
         }
         public string deleteBook()
         {
             return "We Have Deleted your Book";
         }
-       
+        public ActionResult Response(string content, int statusCode)
+        {
+            var response = new ContentResult()
+            {
+                Content = content,
+                ContentType = "application/json",
+                StatusCode = statusCode
+            };
+            return response;
+        }
+
     }
 }

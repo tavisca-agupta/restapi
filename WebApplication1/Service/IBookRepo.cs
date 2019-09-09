@@ -6,9 +6,10 @@ using WebApplication1.Model;
 
 namespace WebApplication1.Service
 {
-    public class Data
+    //For all Types of get methods
+    interface IBookRepo
     {
-        //In real World, This class will have DataBase Implementation
-        public static List<Book> bookList = new List<Book>();
+        IEnumerable<Book> GetAll();
+        Book GetById(int id);
     }
 }
