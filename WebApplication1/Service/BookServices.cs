@@ -9,17 +9,21 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using WebApplication1.Model;
+using static WebApplication1.Service.FluentValidation;
+using FluentValidation.Results;
 
 namespace WebApplication1.Service
 {
     public class BookServices
     {
-        Validate Validate = new Validate();   
+        Validate Validate = new Validate();   //For Regex validation
+        BookValidator Validator = new BookValidator(); //for fluent validation
+
         public ActionResult GetAll()
         {
             int statusCode;
             string content="";
-            if (Data.bookList.Count > 1)
+            if (Data.bookList.Count > 0)
             {
                 content = JsonConvert.SerializeObject(Data.bookList);
                 statusCode = 200;
@@ -32,7 +36,8 @@ namespace WebApplication1.Service
 
         public ActionResult GetById(int id)
         {
-            string content,error;
+            string content;
+            JObject error;
             int statusCode;
             try
             {
@@ -45,7 +50,7 @@ namespace WebApplication1.Service
                 if (id < 0)
                     error = Validate.BookId(id);
                 else
-                    error = "Please Enter Valid Index to Get The Book";
+                    error = JObject.Parse(@"{'Error':'Please Enter Valid Index to Get The Book'}");
 
                 content = JsonConvert.SerializeObject(error);
                 statusCode = 404;
@@ -56,19 +61,39 @@ namespace WebApplication1.Service
         public ActionResult AddBook(Book BookObject)
         {
             string content; int statusCode;
-            List<string> Errors = new List<string>();
-            Errors=Validate.All(BookObject);                      //Validation done here
-            if (Errors.Count < 1)
+            List<JObject> Error = new List<JObject>();
+            Error = Validate.All(BookObject);                      //Own Validation done here 
+            if (Error.Count < 1)
             {
-                content = JsonConvert.SerializeObject("Book Added");
+                content = JsonConvert.SerializeObject(JObject.Parse(@"{'Success':'Book Added'}"));
                 Data.bookList.Add(BookObject);
                 statusCode = 201;
             }
             else
             {
-                content = JsonConvert.SerializeObject(Errors,Formatting.Indented);
+                content = JsonConvert.SerializeObject((Error), Formatting.Indented);
                 statusCode = 400;
             }
+
+            //ValidationResult results = Validator.Validate(BookObject);   //Fluent validation done here
+            //if (!results.IsValid)
+            //{
+            //    foreach (var failure in results.Errors)
+            //    {
+            //        Error.Add(failure.PropertyName + " " + failure.ErrorMessage);
+            //    }
+            //    string allMessages = results.ToString();
+            //    content = JsonConvert.SerializeObject(Error, Formatting.Indented);
+            //   // content = JsonConvert.SerializeObject(allMessages, Formatting.Indented);
+            //    statusCode = 400;
+            //}
+            //else
+            //{
+            //    content = JsonConvert.SerializeObject("Result:Book Added");
+            //    Data.bookList.Add(BookObject);
+            //    statusCode = 201;
+            //}
+
             return Response(content,statusCode);
         }
 
@@ -83,13 +108,13 @@ namespace WebApplication1.Service
             {
                 Data.bookList.Remove(BookToRemove);
                 Data.bookList.Add(bookObject);
-                content = JsonConvert.SerializeObject("Book Updated");
+                content = JsonConvert.SerializeObject(JObject.Parse(@"{'Success':'Book Added'}"));
                 statusCode = 201;
                 
             }
             else
             {
-                content= JsonConvert.SerializeObject("Book is not Present For Updation");
+                content= JsonConvert.SerializeObject(JObject.Parse(@"{'Error':'Book is not Present For Updation'}"));
                 statusCode = 404;
             }
             return Response(content, statusCode);

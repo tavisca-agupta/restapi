@@ -27,7 +27,6 @@ namespace WebApplication1.Controllers
         [HttpGet("{id}", Name = "Get")]
         public ActionResult Get(int id)
         {
-            //return NotFound(book.GetById(id));
             return book.GetById(id);
             
         }

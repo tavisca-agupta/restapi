@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "1545034c0caf29eb9183125d646280f9ba4e7e30"
+    "signature": "9b606872e05682ad0d05a499b61886b5e82fc0fd"
   },
   "compilationOptions": {
     "defines": [
@@ -24,10 +24,13 @@
     ".NETCoreApp,Version=v2.1": {
       "WebApplication1/1.0.0": {
         "dependencies": {
+          "FluentValidation.AspNetCore": "8.4.0",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.9",
+          "NLog": "4.6.7",
+          "NLog.Web.AspNetCore": "4.8.5",
           "Newtonsoft.Json": "12.0.2"
         },
         "runtime": {
@@ -35,6 +38,51 @@
         },
         "compile": {
           "WebApplication1.dll": {}
+        }
+      },
+      "FluentValidation/8.4.0": {
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentValidation.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.4.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
+        }
+      },
+      "FluentValidation.AspNetCore/8.4.0": {
+        "dependencies": {
+          "FluentValidation": "8.4.0",
+          "FluentValidation.DependencyInjectionExtensions": "8.4.0",
+          "Microsoft.AspNetCore.Mvc": "2.1.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentValidation.AspNetCore.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.4.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentValidation.AspNetCore.dll": {}
+        }
+      },
+      "FluentValidation.DependencyInjectionExtensions/8.4.0": {
+        "dependencies": {
+          "FluentValidation": "8.4.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.4.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll": {}
         }
       },
       "Microsoft.AspNetCore.Razor.Design/2.1.2": {},
@@ -373,6 +421,49 @@
         },
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "NLog/4.6.7": {
+        "runtime": {
+          "lib/netstandard2.0/NLog.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.7.10445"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/NLog.dll": {}
+        }
+      },
+      "NLog.Extensions.Logging/1.5.4": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "2.1.1",
+          "NLog": "4.6.7"
+        },
+        "runtime": {
+          "lib/netstandard2.0/NLog.Extensions.Logging.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.5.4.1106"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/NLog.Extensions.Logging.dll": {}
+        }
+      },
+      "NLog.Web.AspNetCore/4.8.5": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.1.1",
+          "Microsoft.AspNetCore.Http": "2.1.1",
+          "Microsoft.AspNetCore.Routing.Abstractions": "2.1.1",
+          "NLog.Extensions.Logging": "1.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/NLog.Web.AspNetCore.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.8.5.1399"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/NLog.Web.AspNetCore.dll": {}
         }
       },
       "NuGet.Frameworks/4.7.0": {
@@ -3468,6 +3559,27 @@
       "serviceable": false,
       "sha512": ""
     },
+    "FluentValidation/8.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/VApywgD2sqD3aB1tzub6SIItmwxXN0D5yAiP3kuFHmjYO1W+Ryi531/m4O03/hlfcYrBgewDJn7Jd1Xk0vTdw==",
+      "path": "fluentvalidation/8.4.0",
+      "hashPath": "fluentvalidation.8.4.0.nupkg.sha512"
+    },
+    "FluentValidation.AspNetCore/8.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yF6P6FLwk2nSYmNR7oPMAMi8rTtrqjcchY0hX9JwJkhAWBcZAxVyLdb64OFSUfSZ2dL7Dmuu8AI3/iCNvUOlUQ==",
+      "path": "fluentvalidation.aspnetcore/8.4.0",
+      "hashPath": "fluentvalidation.aspnetcore.8.4.0.nupkg.sha512"
+    },
+    "FluentValidation.DependencyInjectionExtensions/8.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RZdsBuUJCXGhyjy/XY5E3Xk5VbbCEWc78Qp8Zez0YkTWfdlCuH1Ef2+rg0Ng2ayb7yhinLlSe1YxB9/7j9c7iQ==",
+      "path": "fluentvalidation.dependencyinjectionextensions/8.4.0",
+      "hashPath": "fluentvalidation.dependencyinjectionextensions.8.4.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Razor.Design/2.1.2": {
       "type": "package",
       "serviceable": true,
@@ -3600,6 +3712,27 @@
       "sha512": "sha512-rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
       "path": "newtonsoft.json/12.0.2",
       "hashPath": "newtonsoft.json.12.0.2.nupkg.sha512"
+    },
+    "NLog/4.6.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xSIzXrIF89Ww6yoJPvyBcu4JLgNiDiEaTT4GyVltZEeVIvkgSm9J/srUy1Yz0EXwbTv502l8knoCFrgNc/MUMA==",
+      "path": "nlog/4.6.7",
+      "hashPath": "nlog.4.6.7.nupkg.sha512"
+    },
+    "NLog.Extensions.Logging/1.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-J72MUlcxJ/dITIdOIEeAUAXT93z1/yI7xY3U3r4cFLmJ/yJxm2BLzxJ/r7+Tpry/7s85N1HNXYG5OODRQhI96A==",
+      "path": "nlog.extensions.logging/1.5.4",
+      "hashPath": "nlog.extensions.logging.1.5.4.nupkg.sha512"
+    },
+    "NLog.Web.AspNetCore/4.8.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eNHk9pigSIS7z/0CHx7O3v9QrOm534C9eWQKN/LyH/hkD7vhUTks4ItuoXP/Hh50NsuXDZs4RMSyHxrNQv87BQ==",
+      "path": "nlog.web.aspnetcore/4.8.5",
+      "hashPath": "nlog.web.aspnetcore.4.8.5.nupkg.sha512"
     },
     "NuGet.Frameworks/4.7.0": {
       "type": "package",
