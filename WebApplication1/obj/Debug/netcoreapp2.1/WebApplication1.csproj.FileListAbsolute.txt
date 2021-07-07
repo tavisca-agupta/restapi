@@ -12,3 +12,4 @@ C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1\obj\Debug\netcor
 C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\WebApplication1.RazorTargetAssemblyInfo.cache
 C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\WebApplication1.dll
 C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\WebApplication1.pdb
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1\bin\Debug\netcoreapp2.1\nlog.config

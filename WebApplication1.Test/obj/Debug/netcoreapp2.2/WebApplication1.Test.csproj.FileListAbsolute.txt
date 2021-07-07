@@ -1,0 +1,4 @@
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\obj\Debug\netcoreapp2.2\WebApplication1.Test.csprojAssemblyReference.cache
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\obj\Debug\netcoreapp2.2\WebApplication1.Test.csproj.CoreCompileInputs.cache
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\obj\Debug\netcoreapp2.2\WebApplication1.Test.AssemblyInfoInputs.cache
+C:\Users\agupta\Desktop\Tavisca\WebApplication1\WebApplication1.Test\obj\Debug\netcoreapp2.2\WebApplication1.Test.AssemblyInfo.cs
